@@ -1,0 +1,55 @@
+TO DO:
+
+physics:
+	add physics bounding
+	add collision detections
+
+update camera windows to be based on camera orientation
+	up down
+	left right
+	6 possible orthographical angles to view world space
+
+fix deltaTime step 
+	only checks 1000ms from system time - sometimes dT is negative
+		use second data to correct for that?
+
+add coordinates to camera window
+	axis and range - DONE
+
+change render buffer to be inside border
+	add buffer for axis numbers
+
+add scroll functionality to AGUI
+	partially complete
+
+
+add user input
+	move camera
+	move entities
+
+add tilemap
+	add pathfinding
+	add collision tilemap
+
+on mouse state change of ui - update state change of related objects
+	example: camera window - basenode_button
+			 entity - basenode_button
+
+component parent interace class?
+	revisit need
+
+custome window that creates entities in engine
+
+GUI component ALIGNMENT functions
+	when adding component without position
+		set position automatically based on other components
+GUI inherit background colors
+GUI larger buttons with centered text
+
+add call back to event system
+	change event system to map of map 
+		instead of map of vector
+	
+create onStart() function
+	called when object is created
+	maybe called by constructor 
