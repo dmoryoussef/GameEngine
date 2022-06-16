@@ -22,6 +22,7 @@ class EventListener
 	protected:
 		static map<int, vector<EventListener*>> Listeners;
 		static vector<_Event*> Events;
+
 		//static map<int, map<EventListener*, eventCallBack>> CallBackListeners;
 
 		virtual void onEvent(_Event *pEvent) {}
@@ -53,7 +54,6 @@ class EventListener
 				itEventType++;
 			}
 		}
-
 
 		void addCallbackListener(EventListener *pListener, int event, void (*callback)())
 		{
@@ -144,7 +144,7 @@ class EventListener
 };
 
 //typedef void (*eventCallBack)();
+//map<int, map<EventListener*, eventCallBack>> EventListener::CallBackListeners;
 
 map<int, vector<EventListener*>> EventListener::Listeners;
-//map<int, map<EventListener*, eventCallBack>> EventListener::CallBackListeners;
 vector<_Event*> EventListener::Events;

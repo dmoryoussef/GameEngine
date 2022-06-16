@@ -85,6 +85,8 @@ private:
 								{
 									if (pWindow->getBaseNode() == pButton->getBaseNode())
 									{
+
+										getCurrent<EventListener>()->unregisterAll();
 										removeCurrent();
 									}
 								}

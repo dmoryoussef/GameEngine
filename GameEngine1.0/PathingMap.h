@@ -136,7 +136,7 @@ public:
 
 	void render(ConsoleRender2D *pRenderer, Vector3 vCameraPosition, Vector2 vWorldMin, Vector2 vWorldMax)
 	{
-		pRenderer->DrawQuad(0, 0, pRenderer->nHeight, pRenderer->nWidth, pRenderer->getGreyscaleColor(50));
+		pRenderer->DrawQuad(0, 0, pRenderer->getSize().Y, pRenderer->getSize().X, pRenderer->getGreyscaleColor(50));
 		Vector2 mapSize = getSize();
 		if (vWorldMin.Y < 0)
 			vWorldMin.Y = 0;

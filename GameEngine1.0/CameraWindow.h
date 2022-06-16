@@ -229,37 +229,36 @@ private:
 				// handle dragging
 				if (!m_bDragActive)
 				{
+					bool bMouseDown = pEvent->get<MouseEvent>()->getState().bWheelButtonDown;
+					if (!m_bCameraDrag)
 					{
-						bool bMouseDown = pEvent->get<MouseEvent>()->getState().bWheelButtonDown;
-						if (!m_bCameraDrag)
+						if (bMouseDown)
 						{
-							if (bMouseDown)
+							if (m_bMouseOver)
 							{
-								if (m_bMouseOver)
-								{
-									m_bCameraDrag = true;
-									PreviousMousePosition = CurrentMousePosition;
-								}
+								m_bCameraDrag = true;
+								PreviousMousePosition = CurrentMousePosition;
 							}
+						}
 								
+					}
+					else
+					{
+						if (bMouseDown)
+						{
+							Vector2 DeltaPos = PreviousMousePosition - CurrentMousePosition;
+							PreviousMousePosition = CurrentMousePosition;
+							{
+								Vector3 NewPosition = Vector3(CurrentCameraPosition.X - DeltaPos.X,
+									CurrentCameraPosition.Y - DeltaPos.Y,
+									CurrentCameraPosition.Z);
+								m_pCamera->getChild<Transform3D>()->setPosition(NewPosition);
+							}
 						}
 						else
-						{
-							if (bMouseDown)
-							{
-								Vector2 DeltaPos = PreviousMousePosition - CurrentMousePosition;
-								PreviousMousePosition = CurrentMousePosition;
-								{
-									Vector3 NewPosition = Vector3(CurrentCameraPosition.X - DeltaPos.X,
-										CurrentCameraPosition.Y - DeltaPos.Y,
-										CurrentCameraPosition.Z);
-									m_pCamera->getChild<Transform3D>()->setPosition(NewPosition);
-								}
-							}
-							else
-								m_bCameraDrag = false;
-						}
+							m_bCameraDrag = false;
 					}
+					
 				}
 				else
 				{
@@ -333,8 +332,4 @@ public:
 		m_pRenderer->init(this);
 	}
 
-	//void update(float fDeltaTime)
-	//{
-	//	//set(toString<float>(fDeltaTime), 2, 2, FG_WHITE + BG_BLACK);
-	//}
 };

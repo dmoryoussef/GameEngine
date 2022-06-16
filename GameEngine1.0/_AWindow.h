@@ -1,4 +1,3 @@
-
 class _AWindow : 
 	public _AComponent
 {
